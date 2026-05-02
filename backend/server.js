@@ -12,14 +12,14 @@ app.use(express.json());
 app.use("/api/projects", projectRoutes);
 
 //test route
-app.get("/",(req, res) => {
+app.use("/",(req, res) => {
     res.send("API is running");
 });
 
 //server static files
-app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
-app.get("/*",(req, res)=> {
+app.use((req, res)=> {
         res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
